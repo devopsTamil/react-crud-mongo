@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+
+  mongo-service:
+    container_name: mongo-container
+    image: mongo:latest
+    hostname: monogdb
+    ports:
+      - 27017:27017
+
+  react-be:
+    container_name: react-be-cont
+    hostname: react-be-cont
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: react-be:v1
+    ports:
+      - "4000:4000"
+
+
+  react-fe:
+    container_name: react-fe-cont
+    hostname: react-fe-cont
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: react-fe:v1
+    ports:
+      - "3000:3000"
+
+
+
+
